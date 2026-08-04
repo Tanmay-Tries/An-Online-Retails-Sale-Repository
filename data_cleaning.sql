@@ -41,3 +41,10 @@ when InvoiceDate = 'Null' then null
 else trim(InvoiceDate)
 end as InvoiceDate
 from online_retail;
+
+select *,
+Row_number () over(
+partition by StockCode,Country, Description, Quantity order by InvoiceDate)
+as row_num
+FROM
+    online_retail;
