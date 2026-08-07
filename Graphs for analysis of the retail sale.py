@@ -8,6 +8,19 @@ pd.set_option("display.max_columns", None)
 # Read dataset
 df = pd.read_csv("online_retail_clean.csv")
 
+# Convert InvoiceDate into datetime
+df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
+
+# Create Revenue column
+df["Revenue"] = df["Quantity"] * df["UnitPrice"]
+
+# Feature Engineering
+df["Year"] = df["InvoiceDate"].dt.year
+df["Month"] = df["InvoiceDate"].dt.month_name()
+df["Day"] = df["InvoiceDate"].dt.day
+df["Weekday"] = df["InvoiceDate"].dt.day_name()
+df["Hour"] = df["InvoiceDate"].dt.hour
+
 top_products = (
     df.groupby("Description")["Quantity"]
       .sum()
@@ -48,4 +61,26 @@ sns.countplot(
 )
 
 plt.title("Orders by Country")
+plt.show()
+
+#monthly revenue trend
+monthly_sales = (
+    df.groupby("Month")["Revenue"]
+      .sum()
+      .reindex([
+          "January","February","March","April","May","June",
+          "July","August","September","October","November","December"
+      ])
+)
+plt.figure(figsize=(12,5))
+plt.plot(
+    monthly_sales.index,
+    monthly_sales.values,
+    marker="o"
+)
+plt.xticks(rotation=45)
+plt.title("Monthly Revenue Trend")
+plt.xlabel("Month")
+plt.ylabel("Revenue")
+
 plt.show()
