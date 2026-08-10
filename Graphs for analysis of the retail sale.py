@@ -84,3 +84,39 @@ plt.xlabel("Month")
 plt.ylabel("Revenue")
 
 plt.show()
+
+#Orders by Hour
+hourly = df.groupby("Hour").size()
+plt.figure(figsize=(10,5))
+plt.plot(
+    hourly.index,
+    hourly.values,
+    marker="o"
+)
+plt.title("Orders by Hour")
+plt.xlabel("Hour")
+plt.ylabel("Orders")
+plt.grid(True)
+plt.show()
+
+#Quantity Distribution
+plt.figure(figsize=(8,5))
+plt.hist(
+    df["Quantity"],
+    bins=30
+)
+plt.title("Quantity Distribution")
+plt.xlabel("Quantity")
+plt.ylabel("Frequency")
+plt.show()
+
+#Unit Price Distribution
+plt.figure(figsize=(8,5))
+plt.hist(
+    df["UnitPrice"],
+    bins=30
+)
+plt.title("Unit Price Distribution")
+plt.xlabel("Unit Price")
+plt.ylabel("Frequency")
+plt.show()
