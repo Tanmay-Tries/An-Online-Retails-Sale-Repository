@@ -120,3 +120,20 @@ plt.title("Unit Price Distribution")
 plt.xlabel("Unit Price")
 plt.ylabel("Frequency")
 plt.show()
+
+#Top customers by revenue
+customers = (
+    df.groupby("CustomerID")["Revenue"]
+      .sum()
+      .sort_values(ascending=False)
+      .head(10)
+)
+plt.figure(figsize=(10,6))
+sns.barplot(
+    x=customers.values,
+    y=customers.index.astype(str)
+)
+plt.title("Top Customers by Revenue")
+plt.xlabel("Revenue")
+plt.ylabel("Customer ID")
+plt.show()
