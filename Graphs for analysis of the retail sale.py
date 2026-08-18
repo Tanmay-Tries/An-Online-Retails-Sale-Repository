@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Display all columns
+# Display all columns.
 pd.set_option("display.max_columns", None)
 
 # Read dataset
