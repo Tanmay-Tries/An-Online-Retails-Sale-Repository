@@ -1,3 +1,4 @@
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -136,4 +137,34 @@ sns.barplot(
 plt.title("Top Customers by Revenue")
 plt.xlabel("Revenue")
 plt.ylabel("Customer ID")
+plt.show()
+
+#Top Products by Revenue
+products = (
+    df.groupby("Description")["Revenue"]
+      .sum()
+      .sort_values(ascending=False)
+      .head(10)
+)
+plt.figure(figsize=(12,6))
+sns.barplot(
+    x=products.values,
+    y=products.index
+)
+plt.title("Top Products by Revenue")
+plt.xlabel("Revenue")
+plt.ylabel("Product")
+plt.show()
+
+#Correlation Heatmap
+plt.figure(figsize=(8,5))
+
+sns.heatmap(
+    df[["Quantity","UnitPrice","Revenue"]].corr(),
+    annot=True,
+    cmap="coolwarm"
+)
+
+plt.title("Correlation Heatmap")
+
 plt.show()
