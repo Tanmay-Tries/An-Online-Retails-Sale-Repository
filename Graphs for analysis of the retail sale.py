@@ -139,7 +139,7 @@ plt.xlabel("Revenue")
 plt.ylabel("Customer ID")
 plt.show()
 
-#Top Products by Revenue
+#Top Products by Revenue.
 products = (
     df.groupby("Description")["Revenue"]
       .sum()
@@ -156,7 +156,7 @@ plt.xlabel("Revenue")
 plt.ylabel("Product")
 plt.show()
 
-#Correlation Heatmap
+#Correlation Heatmap.
 plt.figure(figsize=(8,5))
 
 sns.heatmap(
