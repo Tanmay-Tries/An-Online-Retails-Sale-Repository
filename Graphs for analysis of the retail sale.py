@@ -6,16 +6,16 @@ import seaborn as sns
 # Display all columns.
 pd.set_option("display.max_columns", None)
 
-# Read dataset
+# Read dataset.
 df = pd.read_csv("online_retail_clean.csv")
 
-# Convert InvoiceDate into datetime
+# Convert InvoiceDate into datetime.
 df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
 
-# Create Revenue column
+# Create Revenue column.
 df["Revenue"] = df["Quantity"] * df["UnitPrice"]
 
-# Feature Engineering
+# Feature Engineering.
 df["Year"] = df["InvoiceDate"].dt.year
 df["Month"] = df["InvoiceDate"].dt.month_name()
 df["Day"] = df["InvoiceDate"].dt.day
