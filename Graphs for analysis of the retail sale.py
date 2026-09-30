@@ -40,7 +40,7 @@ plt.xlabel("Quantity Sold")
 plt.ylabel("Product")
 plt.show()
 
-#Top 10 sales of countries by Revenue
+#Top 10 sales of countries by Revenue.
 plt.figure(figsize=(10,6))
 sns.barplot(
     x=country_sales.values,
@@ -111,7 +111,7 @@ plt.xlabel("Quantity")
 plt.ylabel("Frequency")
 plt.show()
 
-#Unit Price Distribution
+#Unit Price Distribution.
 plt.figure(figsize=(8,5))
 plt.hist(
     df["UnitPrice"],
